@@ -1,0 +1,41 @@
+{
+  "name": "The Magic Platform",
+  "short_name": "The Magic Platform",
+  "version": "1.0.4",
+  "manifest_version": 2,
+  "description": "Add products to your store and automatic order fulfillment",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+     "contextMenus",
+     "tabs",
+     "storage",
+     "*://*/*"
+  ],
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon19.png",
+      "38": "images/icon38.png"
+    },
+    "default_icon": "icons/icon48.png",
+    "default_title": "AliExpress"
+  },
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_popup": "html/popup.html"
+  },
+  "background": {
+	"scripts": ["js/jquery.js","js/background.js"]
+  },
+  "content_security_policy": "script-src 'self' https://image2datauri.jit.su; https://image2datauri.jit.su; object-src 'self'",
+  "content_scripts": [{
+      "matches": [ "*://*.aliexpress.com/item/*","*://*.aliexpress.com/store/product/*","*://*.aliexpress.com/category/*","*://*.aliexpress.com/order/*","*://*/*"],
+      "js":  [ "js/jquery.js","js/content.js" ],
+      "css": ["css/form.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
